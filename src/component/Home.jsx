@@ -1,11 +1,11 @@
 import React, {
   useState,
   useEffect,
+  useRef,
   createContext,
   useContext,
-} from "react";/* ══════════════════════════════════════════════════════════════
-   THEME SYSTEM — 3 Themes
-══════════════════════════════════════════════════════════════ */
+} from "react";
+
 const THEMES = {
   dark: {
     id: "dark", label: "🌙 Dark",
@@ -1459,13 +1459,50 @@ function GallerySection() {
                   animation: `floatSlow ${4 + i}s ease-in-out infinite, fadeUp .5s ease ${i * 120}ms both`,
                   "--r": `${rotations[i]}deg`, transform: `rotate(${rotations[i]}deg)`,
                 }}>
-                <SketchFrame accent={[t.accent, t.accent3, t.accent2][i]} bg={t.bgCard} pad="10px 10px 28px" rotate={0}
-                  style={{ width: 170 }}>
-                  <div style={{ position: "absolute", top: -10, left: "50%", width: 50, height: 16, background: `${[t.accent, t.accent3, t.accent2][i]}bb`, transform: "translateX(-50%) rotate(-3deg)", borderRadius: 2 }} />
-                  alt={`Akash Maity Snapshot ${i + 1}`}
-                    style={{ width: "100%", height: 190, objectFit: "cover", borderRadius: 4, display: "block" }} 
-                  <p style={{ fontFamily: t.font, fontSize: 14, color: t.ink, textAlign: "center", marginTop: 8 }}>{captions[i]}</p>
-                </SketchFrame>
+               <SketchFrame
+  accent={[t.accent, t.accent3, t.accent2][i]}
+  bg={t.bgCard}
+  pad="10px 10px 28px"
+  rotate={0}
+  style={{ width: 170 }}
+>
+  <div
+    style={{
+      position: "absolute",
+      top: -10,
+      left: "50%",
+      width: 50,
+      height: 16,
+      background: `${[t.accent, t.accent3, t.accent2][i]}bb`,
+      transform: "translateX(-50%) rotate(-3deg)",
+      borderRadius: 2,
+    }}
+  />
+
+  <img
+    src={src}
+    alt={`Akash Maity Snapshot ${i + 1}`}
+    style={{
+      width: "100%",
+      height: 190,
+      objectFit: "cover",
+      borderRadius: 4,
+      display: "block",
+    }}
+  />
+
+  <p
+    style={{
+      fontFamily: t.font,
+      fontSize: 14,
+      color: t.ink,
+      textAlign: "center",
+      marginTop: 8,
+    }}
+  >
+    {captions[i]}
+  </p>
+</SketchFrame>
               </div>
             ))}
           </div>
