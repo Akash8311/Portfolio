@@ -118,11 +118,9 @@ const SKILLS_DATA = [
   { name: "MongoDB", level: 78, color: "#3fb6a8", cat: "Database" },
   { name: "HTML/CSS", level: 92, color: "#e8604c", cat: "Frontend" },
   { name: "Python", level: 55, color: "#3fb6a8", cat: "Language", learning: true },
-  { name: "Java", level: 60, color: "#e8604c", cat: "Language" },
   { name: "C/C++", level: 58, color: "#9b7bd6", cat: "Language" },
   { name: "SQL", level: 65, color: "#6b6a85", cat: "Database" },
   { name: "Git/GitHub", level: 85, color: "#e8604c", cat: "Tools" },
-  { name: "Three.js", level: 50, color: "#5b8def", cat: "Frontend", learning: true },
   { name: "REST APIs", level: 85, color: "#9b7bd6", cat: "Backend" },
   { name: "JWT Auth", level: 80, color: "#e8604c", cat: "Security" },
 ];
@@ -798,7 +796,7 @@ FACTS about Akash:
 - Location: Baranagar, Kolkata, West Bengal, India
 - Email: am6030920@gmail.com, Phone: 9831403680
 - GitHub: github.com/Akash8311, LinkedIn: linkedin.com/in/akash-maity-aa917b38a
-- Skills: React, Node.js, Express, MongoDB, JavaScript, JWT, REST APIs, Python (learning), Java, C++, SQL, Git, Docker, Three.js
+- Skills: React, Node.js, Express, MongoDB, JavaScript, JWT, REST APIs, Python (learning), Java, C++, SQL, Git, Docker,
 - Experience: Full Stack Developer Intern at Prasarnet Consulting Services (2025) — built NovaExam, production features, JWT auth systems
 - Projects: NovaExam (live exam platform), AI Resume Builder (OpenAI + MERN), NovaMart (e-commerce), Image Search (Unsplash API), Age Calculator, Portfolio
 - Currently learning: Python (scripting, automation, ML)
@@ -1614,13 +1612,7 @@ export default function AkashPortfolio() {
         🏅 Badges ({foundEggs.size}/{BADGES.length})
       </button>
 
-      {/* AI assistant button */}
-      <button onClick={() => setShowAI(true)} style={{ position: "fixed", bottom: 56, left: 16, zIndex: 60,
-        background: theme.bgCard, border: `2px solid ${theme.accent4}`, borderRadius: theme.id === "retro" ? 0 : 10,
-        padding: "8px 14px", cursor: "pointer", fontFamily: theme.fontMono, fontSize: 12, color: theme.accent4,
-        boxShadow: theme.id === "cyberpunk" ? `0 0 10px ${theme.accent4}` : "none", marginTop: 4 }}>
-        🤖 Ask AI
-      </button>
+     
 
       {showBadges && <BadgesModal found={foundEggs} onClose={() => setShowBadges(false)} />}
       {showAI && <AIAssistant onClose={() => setShowAI(false)} />}
@@ -1646,7 +1638,7 @@ export default function AkashPortfolio() {
             Made with ✏️ + ☕ by Akash Maity · {new Date().getFullYear()}
           </p>
           <p style={{ fontFamily: theme.fontMono, color: theme.inkMuted, fontSize: 11, marginTop: 6 }}>
-            React · Three.js (Sketchbook hallway) · Framer Motion · CSS · Lots of coffee
+            React · Framer Motion · CSS · Lots of coffee
           </p>
         </footer>
       </main>
