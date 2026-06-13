@@ -1,11 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-  createContext,
-  useContext
-} from "react";
+import { useState, useEffect, useRef } from "react";
 /* ══════════════════════════════════════════════════════════════
    THEME SYSTEM — 3 Themes
 ══════════════════════════════════════════════════════════════ */
@@ -1196,10 +1189,15 @@ function useVisitorCount() {
 /* ══════════════════════════════════════════════════════════════
    HERO SECTION
 ══════════════════════════════════════════════════════════════ */
+const roles = [
+  "Full Stack Developer",
+  "MERN Specialist",
+  "BCA Graduate",
+  "Curious Builder"
+];
 function HeroSection({ visitors }) {
   const t = useTh();
   const [typed, setTyped] = useState("");
-  const roles = ["Full Stack Developer", "MERN Specialist", "BCA Graduate", "Curious Builder"];
   const roleIdx = useRef(0);
   const charIdx = useRef(0);
   const deleting = useRef(false);
@@ -1460,7 +1458,7 @@ function GallerySection() {
                 <SketchFrame accent={[t.accent, t.accent3, t.accent2][i]} bg={t.bgCard} pad="10px 10px 28px" rotate={0}
                   style={{ width: 170 }}>
                   <div style={{ position: "absolute", top: -10, left: "50%", width: 50, height: 16, background: `${[t.accent, t.accent3, t.accent2][i]}bb`, transform: "translateX(-50%) rotate(-3deg)", borderRadius: 2 }} />
-                  <img src={src} alt={`Akash Maity photo ${i + 1}`}
+                  alt={`Akash Maity Snapshot ${i + 1}`}
                     style={{ width: "100%", height: 190, objectFit: "cover", borderRadius: 4, display: "block" }} />
                   <p style={{ fontFamily: t.font, fontSize: 14, color: t.ink, textAlign: "center", marginTop: 8 }}>{captions[i]}</p>
                 </SketchFrame>
