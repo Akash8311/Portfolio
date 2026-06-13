@@ -111,17 +111,16 @@ const PROJECTS = [
 ];
 
 const SKILLS_DATA = [
-  { name: "React", level: 88, color: "#5b8def", cat: "Frontend" },
-  { name: "JavaScript", level: 90, color: "#f4c542", cat: "Language" },
-  { name: "Node.js", level: 82, color: "#3fb6a8", cat: "Backend" },
-  { name: "Express.js", level: 80, color: "#6b6a85", cat: "Backend" },
-  { name: "MongoDB", level: 78, color: "#3fb6a8", cat: "Database" },
+  { name: "React", level: 65, color: "#5b8def", cat: "Frontend" },
+  { name: "JavaScript", level: 80, color: "#f4c542", cat: "Language" },
+  { name: "Node.js", level: 30, color: "#3fb6a8", cat: "Backend" },
+  { name: "Express.js", level: 20, color: "#6b6a85", cat: "Backend" },
+  { name: "MongoDB", level: 60, color: "#3fb6a8", cat: "Database" },
   { name: "HTML/CSS", level: 92, color: "#e8604c", cat: "Frontend" },
-  { name: "Python", level: 55, color: "#3fb6a8", cat: "Language", learning: true },
-  { name: "C/C++", level: 58, color: "#9b7bd6", cat: "Language" },
-  { name: "SQL", level: 65, color: "#6b6a85", cat: "Database" },
+  { name: "Python", level: 40, color: "#3fb6a8", cat: "Language", learning: true },
+  { name: "C", level: 66, color: "#9b7bd6", cat: "Language" },
   { name: "Git/GitHub", level: 85, color: "#e8604c", cat: "Tools" },
-  { name: "REST APIs", level: 85, color: "#9b7bd6", cat: "Backend" },
+  { name: "REST APIs", level: 70, color: "#9b7bd6", cat: "Backend" },
   { name: "JWT Auth", level: 80, color: "#e8604c", cat: "Security" },
 ];
 
@@ -1193,9 +1192,9 @@ function useVisitorCount() {
 ══════════════════════════════════════════════════════════════ */
 const roles = [
   "Full Stack Developer",
-  "MERN Specialist",
+  "Clean Code",
   "BCA Graduate",
-  "Curious Builder"
+  "Currently Learning-Python "
 ];
 function HeroSection({ visitors }) {
   const t = useTh();
@@ -1317,7 +1316,7 @@ function AboutSection() {
             <span style={{ fontSize: 26, position: "relative" }}>🐍</span>
             <div style={{ position: "relative" }}>
               <p style={{ margin: 0, fontFamily: t.fontMono, fontWeight: 700, fontSize: 11, color: t.accent2, letterSpacing: "0.08em", textTransform: "uppercase" }}>Currently Learning</p>
-              <p style={{ margin: 0, fontFamily: t.font, fontWeight: 700, fontSize: 20, color: t.ink }}>Python — scripting, automation & ML</p>
+              <p style={{ margin: 0, fontFamily: t.font, fontWeight: 700, fontSize: 20, color: t.ink }}>Python — scripting</p>
             </div>
             <div style={{ position: "relative", width: 10, height: 10 }}>
               <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: t.accent2, animation: "pulseRing 1.8s ease-out infinite" }} />
