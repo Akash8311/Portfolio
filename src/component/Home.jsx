@@ -1463,7 +1463,7 @@ function GallerySection() {
                   style={{ width: 170 }}>
                   <div style={{ position: "absolute", top: -10, left: "50%", width: 50, height: 16, background: `${[t.accent, t.accent3, t.accent2][i]}bb`, transform: "translateX(-50%) rotate(-3deg)", borderRadius: 2 }} />
                   alt={`Akash Maity Snapshot ${i + 1}`}
-                    style={{ width: "100%", height: 190, objectFit: "cover", borderRadius: 4, display: "block" }} />
+                    style={{ width: "100%", height: 190, objectFit: "cover", borderRadius: 4, display: "block" }} 
                   <p style={{ fontFamily: t.font, fontSize: 14, color: t.ink, textAlign: "center", marginTop: 8 }}>{captions[i]}</p>
                 </SketchFrame>
               </div>
