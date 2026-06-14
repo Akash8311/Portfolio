@@ -1275,9 +1275,7 @@ function HeroSection({ visitors }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ABOUT SECTION
-══════════════════════════════════════════════════════════════ */
+
 function AboutSection() {
   const t = useTh();
   const facts = [
@@ -1307,7 +1305,6 @@ function AboutSection() {
             Passionate about solving real-world problems through clean architecture and user-focused design. Currently completing my BCA at JIS University with a 7.71 CGPA — Highest Honors.
           </p>
 
-          {/* Python learning badge */}
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12, marginTop: 24, padding: "14px 22px",
             background: `linear-gradient(135deg,${t.accent2}22,${t.accent3}22)`,
             border: `2.5px solid ${t.accent2}`, borderRadius: t.id === "retro" ? 0 : 16,
