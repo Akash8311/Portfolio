@@ -40,9 +40,6 @@ const THEMES = {
   },
 };
 
-/* ══════════════════════════════════════════════════════════════
-   DATA
-══════════════════════════════════════════════════════════════ */
 const RESUME_DATA = {
   name: "Akash Maity",
   title: "Full Stack Developer | BCA Graduate | Open to Work",
@@ -171,9 +168,7 @@ const GUIDE_MSGS = [
   "End of the hallway — say hi 👋",
 ];
 
-/* ══════════════════════════════════════════════════════════════
-   CSS INJECTION
-══════════════════════════════════════════════════════════════ */
+
 function injectStyles(t) {
   const id = "akash-portfolio-styles";
   let el = document.getElementById(id);
@@ -251,10 +246,6 @@ function injectStyles(t) {
     }
   `;
 }
-
-/* ══════════════════════════════════════════════════════════════
-   ATOMIC COMPONENTS
-══════════════════════════════════════════════════════════════ */
 function SketchFrame({ children, accent, bg, rotate = 0, pad = "20px", style = {}, onClick, className = "" }) {
   const t = useTh();
   return (
@@ -341,16 +332,8 @@ function ProgressBar({ pct, color, label, delay = 0 }) {
     </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   CONTEXT
-══════════════════════════════════════════════════════════════ */
 const ThCtx = createContext(THEMES.dark);
 const useTh = () => useContext(ThCtx);
-
-/* ══════════════════════════════════════════════════════════════
-   GITHUB DASHBOARD
-══════════════════════════════════════════════════════════════ */
 function GitHubDashboard() {
   const t = useTh();
   const [data, setData] = useState(null);
@@ -441,10 +424,6 @@ function GitHubDashboard() {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   SKILLS VISUALIZATION
-══════════════════════════════════════════════════════════════ */
 function SkillsSection() {
   const t = useTh();
   const [tab, setTab] = useState("bars");
@@ -553,10 +532,6 @@ function SkillsSection() {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   TIMELINE
-══════════════════════════════════════════════════════════════ */
 function TimelineSection() {
   const t = useTh();
   const typeColors = { edu: t.accent3, work: t.accent5, project: t.accent, goal: t.accent2 };
@@ -566,7 +541,7 @@ function TimelineSection() {
     <section style={{ padding: "80px 24px", position: "relative", zIndex: 5 }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <SectionTag>🗓️ Career Path</SectionTag>
-        <SectionTitle accent={t.accent5}>The road so far</SectionTitle>
+        <SectionTitle accent={t.accent5}>The road so far🚀</SectionTitle>
         <div style={{ position: "relative" }}>
           <div className="timeline-line" style={{ position: "absolute", left: 28, top: 0, bottom: 0, width: 3, background: `${t.border}33`, borderRadius: 2 }} />
           {TIMELINE.map((item, i) => (
@@ -597,9 +572,6 @@ function TimelineSection() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   EXPERIENCE SECTION
-══════════════════════════════════════════════════════════════ */
 function ExperienceSection() {
   const t = useTh();
   return (
@@ -648,10 +620,6 @@ function ExperienceSection() {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   RESUME DOWNLOAD SECTION
-══════════════════════════════════════════════════════════════ */
 function ResumeSection() {
   const t = useTh();
   const [downloading, setDownloading] = useState(false);
@@ -731,10 +699,6 @@ function ResumeSection() {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   CERTIFICATIONS
-══════════════════════════════════════════════════════════════ */
 function CertsSection() {
   const t = useTh();
   const [sel, setSel] = useState(null);
@@ -743,7 +707,7 @@ function CertsSection() {
     <section style={{ padding: "80px 24px", position: "relative", zIndex: 5 }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <SectionTag>🏆 Certifications</SectionTag>
-        <SectionTitle accent={t.accent5}>Proof of the work</SectionTitle>
+        <SectionTitle accent={t.accent5}>Proof of the work🛸</SectionTitle>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))", gap: 24 }}>
           {CERTS.map((cert, i) => (
             <div key={i} onClick={() => setSel(cert)} style={{ cursor: "pointer", animation: `fadeUp .4s ease ${i * 80}ms both` }}>
@@ -780,9 +744,6 @@ function CertsSection() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   AI PORTFOLIO ASSISTANT
-══════════════════════════════════════════════════════════════ */
 function AIAssistant({ onClose }) {
   const t = useTh();
   const [msgs, setMsgs] = useState([{ role: "assistant", text: "Hey! I'm Akash's AI assistant 👋 Ask me anything about his skills, projects, experience, or how to get in touch!" }]);
@@ -876,9 +837,6 @@ Keep answers friendly, concise, and enthusiastic. Use emojis occasionally.`;
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   CONTACT FORM
-══════════════════════════════════════════════════════════════ */
 function ContactSection() {
   const t = useTh();
   const [form, setForm] = useState({ name: "", email: "", msg: "" });
@@ -960,10 +918,6 @@ const handleSend = async () => {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════════════════════════════ */
 function TestimonialsSection() {
   const t = useTh();
   return (
@@ -989,10 +943,6 @@ function TestimonialsSection() {
     </section>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   PROJECTS SECTION
-══════════════════════════════════════════════════════════════ */
 function ProjectsSection({ onOpen }) {
   const t = useTh();
   return (
@@ -1078,10 +1028,6 @@ function ProjectModal({ project: p, onClose }) {
     </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   EASTER EGG + BADGES
-══════════════════════════════════════════════════════════════ */
 const BADGES = [
   { id: "ghost", emoji: "👻", label: "Ghost Hunter", desc: "Found the doodle ghost!" },
   { id: "coffee", emoji: "☕", label: "Coffee Buddy", desc: "Discovered Akash's fuel source." },
@@ -1089,7 +1035,6 @@ const BADGES = [
   { id: "cat", emoji: "🐱", label: "Cat Whisperer", desc: "Woke up the judgy cat." },
   { id: "feather", emoji: "🪶", label: "Full Portfolio", desc: "Read every Section." },
 ];
-
 function EasterEggLayer({ onFound }) {
   return (
     <>
@@ -1104,7 +1049,6 @@ function EasterEggLayer({ onFound }) {
     </>
   );
 }
-
 function BadgesModal({ found, onClose }) {
   const t = useTh();
   return (
@@ -1133,10 +1077,6 @@ function BadgesModal({ found, onClose }) {
     </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   GUIDE CHARACTER
-══════════════════════════════════════════════════════════════ */
 function GuideChar({ message }) {
   const t = useTh();
   const pupL = useRef(null), pupR = useRef(null);
@@ -1175,10 +1115,6 @@ function GuideChar({ message }) {
     </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   THEME SWITCHER
-══════════════════════════════════════════════════════════════ */
 function ThemeSwitcher({ current, onChange }) {
   const t = THEMES[current];
   const [open, setOpen] = useState(false);
@@ -1203,18 +1139,10 @@ function ThemeSwitcher({ current, onChange }) {
     </div>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════
-   VISITOR COUNTER (in-memory)
-══════════════════════════════════════════════════════════════ */
 function useVisitorCount() {
   const [count] = useState(1247 + Math.floor(Math.random() * 40));
   return { count, returning: false };
 }
-
-/* ══════════════════════════════════════════════════════════════
-   HERO SECTION
-══════════════════════════════════════════════════════════════ */
 const roles = [
   "Full Stack Developer",
   "Clean Code",
@@ -1269,7 +1197,7 @@ function HeroSection({ visitors }) {
 
       <div style={{ animation: "fadeUp .6s ease .1s both" }}>
         <SketchFrame accent={t.border} bg={`${t.bgCard}cc`} rotate={-1} pad="5px 14px" style={{ display: "inline-block", marginBottom: 16 }}>
-          <span style={{ fontFamily: t.fontMono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: t.inkMuted }}>✏️ welcome to my portfolio</span>
+          <span style={{ fontFamily: t.fontMono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: t.inkMuted }}>welcome to my portfolio❤️</span>
         </SketchFrame>
       </div>
 
@@ -1362,15 +1290,11 @@ function AboutSection() {
 }
 
 
-/* ══════════════════════════════════════════════════════════════
-   CODING ILLUSTRATION — "me at my desk"
-══════════════════════════════════════════════════════════════ */
 function CodingIllustration() {
   const t = useTh();
   const codeLines = [0.7, 0.45, 0.85, 0.3, 0.6, 0.4, 0.75, 0.5, 0.65, 0.35, 0.8, 0.45, 0.55, 0.7];
   return (
     <svg viewBox="0 0 420 340" width="100%" height="100%" style={{ maxWidth: 380, display: "block", margin: "0 auto" }}>
-      {/* floor shadow */}
       <ellipse cx="210" cy="318" rx="160" ry="14" fill={t.ink} opacity="0.06" />
 
       {/* desk */}
@@ -1391,7 +1315,6 @@ function CodingIllustration() {
         <rect x="115" y="226" width="60" height="6" rx="3" fill={t.inkMuted} opacity="0.5" />
       </g>
 
-      {/* monitor 2 (taller, behind) */}
       <g transform="translate(206,0)">
         <rect x="78" y="104" width="140" height="100" rx="6" fill={t.bgDark} stroke={t.accent2} strokeWidth="3" />
         <rect x="86" y="112" width="124" height="84" rx="2" fill={t.bg} />
@@ -1452,9 +1375,6 @@ function CodingIllustration() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   GALLERY SECTION — personal snapshots + "at my desk" illustration
-══════════════════════════════════════════════════════════════ */
 function GallerySection() {
   const t = useTh();
   const rotations = [-6, 4, -3];
@@ -1541,9 +1461,6 @@ function GallerySection() {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════
-   MAIN APP
-══════════════════════════════════════════════════════════════ */
 export default function AkashPortfolio() {
   const [themeId, setThemeId] = useState("dark");
   const theme = THEMES[themeId];
@@ -1734,7 +1651,7 @@ export default function AkashPortfolio() {
         fontSize: 12,
       }}
     >
-      Made with ✏️ + ☕ by Akash Maity · {new Date().getFullYear()}
+      Made with 👾 + ☕ by Akash Maity · {new Date().getFullYear()}
     </p>
 
     <p
