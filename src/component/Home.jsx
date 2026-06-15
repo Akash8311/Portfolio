@@ -5,6 +5,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
+import emailjs from "@emailjs/browser";
 
 const THEMES = {
   dark: {
@@ -154,7 +155,7 @@ const EASTER_EGGS = [
   { id: "coffee", emoji: "☕", msg: "☕ That's Akash's 4th coffee today. The code compiles faster now.", pos: { bottom: "8%", left: "6%" } },
   { id: "plane", emoji: "✈️", msg: "✈️ A paper airplane from another dimension!", pos: { top: "10%", right: "6%" } },
   { id: "cat", emoji: "🐱", msg: "🐱 Doodle's cat. Mostly asleep. Occasionally reviews PRs.", pos: { bottom: "12%", right: "8%" } },
-  { id: "feather", emoji: "🪶", msg: "🪶 You found the end of the sketchbook. Thanks for reading every page!", pos: { top: "8%", left: "6%" } },
+  { id: "feather", emoji: "🪶", msg: "🪶 You found the end of the Portfolio. Thanks for reading every page!", pos: { top: "8%", left: "6%" } },
 ];
 
 const GUIDE_MSGS = [
@@ -799,7 +800,7 @@ FACTS about Akash:
 - Experience: Full Stack Developer Intern at Prasarnet Consulting Services (2025) — built NovaExam, production features, JWT auth systems
 - Projects: NovaExam (live exam platform), AI Resume Builder (OpenAI + MERN), NovaMart (e-commerce), Image Search (Unsplash API), Age Calculator, Portfolio
 - Currently learning: Python (scripting, automation, ML)
-- Personality: Creative, curious, coffee-fueled developer who treats every project like a sketchbook page
+- Personality: Creative, curious, coffee-fueled developer
 - Open to: Full-time SWE roles, freelance, collaboration
 Keep answers friendly, concise, and enthusiastic. Use emojis occasionally.`;
 
@@ -883,15 +884,39 @@ function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", msg: "" });
   const [status, setStatus] = useState(null); // null | "sending" | "ok" | "err"
 
-  const handleSend = async () => {
-    if (!form.name || !form.email || !form.msg) { setStatus("err"); setTimeout(() => setStatus(null), 3000); return; }
-    setStatus("sending");
-    // Simulate send (EmailJS requires keys)
-    await new Promise(r => setTimeout(r, 1600));
+const handleSend = async () => {
+  if (!form.name || !form.email || !form.msg) {
+    setStatus("err");
+    return;
+  }
+
+  setStatus("sending");
+
+  try {
+    await emailjs.send(
+      "service_48ud28v",
+      "template_6fd7t3m",
+      {
+        name: form.name,
+        email: form.email,
+        message: form.msg,
+        time: new Date().toLocaleString(),
+      },
+      "40J5NN-ld_-mpd8j7"
+    );
+
     setStatus("ok");
-    setForm({ name: "", email: "", msg: "" });
-    setTimeout(() => setStatus(null), 4000);
-  };
+
+    setForm({
+      name: "",
+      email: "",
+      msg: "",
+    });
+  } catch (error) {
+    console.error("Email Error:", error);
+    setStatus("err");
+  }
+};
 
   const field = (key, placeholder, multiline = false) => {
     const Tag = multiline ? "textarea" : "input";
@@ -1062,7 +1087,7 @@ const BADGES = [
   { id: "coffee", emoji: "☕", label: "Coffee Buddy", desc: "Discovered Akash's fuel source." },
   { id: "plane", emoji: "✈️", label: "Explorer", desc: "Caught a paper airplane mid-flight!" },
   { id: "cat", emoji: "🐱", label: "Cat Whisperer", desc: "Woke up the judgy cat." },
-  { id: "feather", emoji: "🪶", label: "Full Sketchbook", desc: "Read every single page." },
+  { id: "feather", emoji: "🪶", label: "Full Portfolio", desc: "Read every Section." },
 ];
 
 function EasterEggLayer({ onFound }) {
@@ -1244,7 +1269,7 @@ function HeroSection({ visitors }) {
 
       <div style={{ animation: "fadeUp .6s ease .1s both" }}>
         <SketchFrame accent={t.border} bg={`${t.bgCard}cc`} rotate={-1} pad="5px 14px" style={{ display: "inline-block", marginBottom: 16 }}>
-          <span style={{ fontFamily: t.fontMono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: t.inkMuted }}>✏️ welcome to my sketchbook</span>
+          <span style={{ fontFamily: t.fontMono, fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: t.inkMuted }}>✏️ welcome to my portfolio</span>
         </SketchFrame>
       </div>
 
@@ -1258,8 +1283,7 @@ function HeroSection({ visitors }) {
       </div>
 
       <p style={{ fontFamily: t.fontBody, fontSize: "clamp(14px,2vw,18px)", color: t.inkLight, maxWidth: 520, margin: "0 auto 36px", lineHeight: 1.8, animation: "fadeUp .6s ease .55s both" }}>
-        Full-stack developer who treats every project like a page in a sketchbook —
-        a little messy, a little weird, always made with care.
+       BCA Graduate passionate about web development, problem-solving, and building modern digital experiences.
       </p>
 
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", marginBottom: 48, animation: "fadeUp .6s ease .7s both" }}>
@@ -1576,6 +1600,9 @@ export default function AkashPortfolio() {
 
   return (
     <ThCtx.Provider value={theme}>
+
+   
+
       <ThemeSwitcher current={themeId} onChange={setThemeId} />
 
       {/* Theme-specific font imports */}
@@ -1615,29 +1642,113 @@ export default function AkashPortfolio() {
       {openProject && <ProjectModal project={openProject} onClose={() => setOpenProject(null)} />}
 
       <main>
-        <div ref={setRef(0)}><HeroSection visitors={visitors} /></div>
-        <div ref={setRef(1)}><AboutSection /></div>
-        <div ref={setRef(2)}><GallerySection /></div>
-        <div ref={setRef(3)}><ExperienceSection /></div>
-        <div ref={setRef(4)}><ProjectsSection onOpen={setOpenProject} /></div>
-        <div ref={setRef(5)}><SkillsSection /></div>
-        <div ref={setRef(6)}><TimelineSection /></div>
-        <div ref={setRef(7)}><CertsSection /></div>
-        <div ref={setRef(8)}><GitHubDashboard /></div>
-        <div ref={setRef(9)}><TestimonialsSection /></div>
-        <div ref={setRef(10)}><ResumeSection /></div>
-        <div ref={setRef(11)}><ContactSection /></div>
+  {/* Hero Section with Video */}
+  <div
+    ref={setRef(0)}
+    style={{
+      position: "relative",
+      height: "100vh",
+      overflow: "hidden",
+    }}
+  >
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        zIndex: -1,
+        opacity: 0.25,
+        pointerEvents: "none",
+      }}
+    >
+      <source src="/video.mp4" type="video/mp4" />
+    </video>
 
-        {/* Footer */}
-        <footer style={{ textAlign: "center", padding: "40px 24px 80px", position: "relative", zIndex: 5 }}>
-          <p style={{ fontFamily: theme.fontMono, color: theme.inkMuted, fontSize: 12 }}>
-            Made with ✏️ + ☕ by Akash Maity · {new Date().getFullYear()}
-          </p>
-          <p style={{ fontFamily: theme.fontMono, color: theme.inkMuted, fontSize: 11, marginTop: 6 }}>
-            React · Framer Motion · CSS · Lots of coffee
-          </p>
-        </footer>
-      </main>
+    <HeroSection visitors={visitors} />
+  </div>
+
+  <div ref={setRef(1)}>
+    <AboutSection />
+  </div>
+
+  <div ref={setRef(2)}>
+    <GallerySection />
+  </div>
+
+  <div ref={setRef(3)}>
+    <ExperienceSection />
+  </div>
+
+  <div ref={setRef(4)}>
+    <ProjectsSection onOpen={setOpenProject} />
+  </div>
+
+  <div ref={setRef(5)}>
+    <SkillsSection />
+  </div>
+
+  <div ref={setRef(6)}>
+    <TimelineSection />
+  </div>
+
+  <div ref={setRef(7)}>
+    <CertsSection />
+  </div>
+
+  <div ref={setRef(8)}>
+    <GitHubDashboard />
+  </div>
+
+  <div ref={setRef(9)}>
+    <TestimonialsSection />
+  </div>
+
+  <div ref={setRef(10)}>
+    <ResumeSection />
+  </div>
+
+  <div ref={setRef(11)}>
+    <ContactSection />
+  </div>
+
+  {/* Footer */}
+  <footer
+    style={{
+      textAlign: "center",
+      padding: "40px 24px 80px",
+      position: "relative",
+      zIndex: 5,
+    }}
+  >
+    <p
+      style={{
+        fontFamily: theme.fontMono,
+        color: theme.inkMuted,
+        fontSize: 12,
+      }}
+    >
+      Made with ✏️ + ☕ by Akash Maity · {new Date().getFullYear()}
+    </p>
+
+    <p
+      style={{
+        fontFamily: theme.fontMono,
+        color: theme.inkMuted,
+        fontSize: 11,
+        marginTop: 6,
+      }}
+    >
+      React · Framer Motion · CSS · Lots of coffee
+    </p>
+  </footer>
+</main>
     </ThCtx.Provider>
   );
 }
